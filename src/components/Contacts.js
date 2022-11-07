@@ -8,23 +8,12 @@ export class Contacts extends Component {
         super(props)
         console.log(this.props.contactList)
         this.state = {
-            contacts: [
-                {
-                    id: "1",
-                    name: "bhumi",
-                    email: "bhumi@gmail.com"
-                },
-                {
-                    id: "2",
-                    name: "UI",
-                    email: "ui@gmail.com"
-                }
-            ]
+            contacts: this.props.contactList
         }
     }
 
     removeContact(id) {
-        console.log(id)
+        this.state.contacts = this.state.contacts.filter(x => x.id != id)
     }
 
     render() {
@@ -50,12 +39,12 @@ export class Contacts extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.contacts.map((contact) => {
+                            {this.state.contacts.map((contact, index) => {
 
                                 return <tr className="table-primary" scope="row">
                                     <td> <Link to={{ pathname: `contact/${contact.id}` }} >
                                         {contact.id}
-                                        </Link>
+                                    </Link>
                                     </td>
                                     <td key={contact.id}>{contact.name}</td>
                                     <td key={contact.id}>{contact.email}</td>
