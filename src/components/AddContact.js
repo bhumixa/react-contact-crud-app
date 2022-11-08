@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom';
 import { useLocation, Navigate, useNavigate } from 'react-router-dom'
 
 const AddContact = (props) => {
+    const myuuid = uuidv4();
     const [contact, setContact] = useState({
-        id: "",
+        id: myuuid,
         name: "",
         email: ""
     })
@@ -14,15 +15,18 @@ const AddContact = (props) => {
 
 
     const addNewContact = async () => {
-        const myuuid = await uuidv4();
-        console.log(myuuid);
-
-        // await setContact(c => ({...c, id:myuuid}));
-
-        await setContact({...contact,id:myuuid })
+        
         console.log(contact)
         await props.newContactHandler(contact)
         navigate('/')
+        
+        // setTimeout(async()=>{           
+        //     console.log(contact)
+           
+        //     navigate('/')
+        // }, 1000)
+        
+       
         // await this.setState({ id: myuuid })
         // console.log(this.state)
         // this.props.newContactHandler(this.state)

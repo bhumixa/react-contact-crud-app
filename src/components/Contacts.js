@@ -12,8 +12,10 @@ export class Contacts extends Component {
         }
     }
 
-    removeContact(id) {
-        this.state.contacts = this.state.contacts.filter(x => x.id != id)
+    async removeContact(id) {
+       let newList = await this.state.contacts.filter(x => x.id != id)
+       this.setState({contacts: newList})
+       await this.props.contactListUpdatedHandler(newList)
     }
 
     render() {
@@ -41,7 +43,7 @@ export class Contacts extends Component {
                         <tbody>
                             {this.state.contacts.map((contact, index) => {
 
-                                return <tr className="table-primary" scope="row">
+                                return <tr className="table-primary" scope="row" key={contact.id}>
                                     <td> <Link to={{ pathname: `contact/${contact.id}` }} >
                                         {contact.id}
                                     </Link>

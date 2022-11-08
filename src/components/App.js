@@ -23,13 +23,20 @@ function App() {
 
     console.log(contacts)
   }
+
+  const contactListUpdated = async (contacts) => {
+    console.log('contacts')
+    console.log(contacts)
+    await setContact(contacts)
+  }
+
   return (
     
     <>
       <div className="container">
         <BrowserRouter>
           <Routes>
-            <Route exact path="/" element={<Contacts contactList={contacts} />}></Route>
+            <Route exact path="/" element={<Contacts contactList={contacts} contactListUpdatedHandler={contactListUpdated} />}></Route>
             <Route exact path="add" element={<AddContact newContactHandler={newContactAdded} />} > </Route>
             <Route exact path="contact/:id" element={<ContactDetails />} > </Route>
           </Routes>
