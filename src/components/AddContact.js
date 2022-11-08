@@ -104,7 +104,7 @@ export class AddContact extends Component {
             className="card col-md-12 mx-auto bg-secondary text-white"
             style={{ width: "18rem" }}
           >
-            <h3 className="mx-2 my-3 justify-content-start"> Add New Contact</h3>
+            <h4 className="mx-2 my-3 justify-content-start">  <i class="bi bi-person-circle"></i> &nbsp; Add New Contact</h4>
 
             <div className="row ">
               <form>

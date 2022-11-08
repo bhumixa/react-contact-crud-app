@@ -35,8 +35,14 @@ export class Contacts extends Component {
                 <tr className="table-primary" key={contact.id}>
                   <td>
                     {" "}
-                    <Link to={{ pathname: `contact/${contact.id}` }}>
-                      {contact.id}
+                    <Link                      
+                      to={{
+                        pathname: `contact/${contact.id}`                        
+                      }}
+                      state={contact}
+                      key={contact.id}
+                    >
+                      {index + 1}
                     </Link>
                   </td>
                   <td key={contact.id}>{contact.name}</td>
@@ -47,7 +53,10 @@ export class Contacts extends Component {
                       className="btn btn-danger"
                       onClick={() => this.removeContact(contact.id)}
                     >
-                      Delete
+                      <i
+                        class="bi bi-trash"
+                        style={{ "font-size": "20px" }}
+                      ></i>
                     </button>
                   </td>
                 </tr>
@@ -59,9 +68,7 @@ export class Contacts extends Component {
     } else {
       contactContent = (
         <div className="row text-center my-2 ">
-          <div className="col text-center">
-            No Contact Found. Please Add
-          </div>
+          <div className="col text-center">No Contact Found. Please Add</div>
         </div>
       );
     }
@@ -72,7 +79,11 @@ export class Contacts extends Component {
             <div className="col text-end">
               <Link to="/add">
                 <button type="button" className="btn btn-primary mb-3 ">
-                  Add
+                  Add New Contact &nbsp;
+                  <i
+                    class="bi bi-person-plus"
+                    style={{ "font-size": "18px" }}
+                  ></i>
                 </button>
               </Link>
             </div>
