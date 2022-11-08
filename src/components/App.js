@@ -6,6 +6,7 @@ import AddContact from './AddContact';
 import { useState } from 'react';
 import ContactDetails from './ContactDetails';
 import { useLocation, Navigate, useNavigate } from 'react-router-dom'
+import NavBar from './NavBar';
 
 // function App() {
 //   const navigate = useNavigate()
@@ -51,7 +52,8 @@ import { useLocation, Navigate, useNavigate } from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
-      <RouterComponent />
+     <NavBar />
+      <RouterComponent />     
     </BrowserRouter>
   )
 }
